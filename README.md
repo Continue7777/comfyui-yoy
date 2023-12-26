@@ -11,6 +11,9 @@ There is a demo workflow in examples that you can download it.Maybe use your own
 Just add a yoy_nodes/MOCKUP and select a product,then link the output to a previewImage.
 ![](examples/example.png)
 
+# gallery
+![](examples/pillow1.png) ![](examples/pillow2.png)
+
 # Todo
 + If you like it,we have nearly 1000+ products to offer.
 + Some workflows for you to try on T-shirts or other products.
