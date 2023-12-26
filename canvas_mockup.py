@@ -31,14 +31,17 @@ def mockup_render(spu,img):
         tmp_texture = Image.new("RGBA", texture_img.size, "white")
         tmp_texture.paste(texture_img,(0,0),texture_img)
 
-    tmp_base = Image.new("RGBA",base_img.size,(0,0,0,0))
+    tmp1_base = Image.new("RGBA",base_img.size,(0,0,0,0))
+    tmp2_base = Image.new("RGBA", base_img.size, (255, 255, 255, 255))
     mask_size = np.where(np.array(mask_img)[:,:,3] > 200)
     h = max(mask_size[0]) - min(mask_size[0])
     w = max(mask_size[1]) - min(mask_size[1])
     left_top = min(mask_size[1]), min(mask_size[0])
 
-    tmp_base.paste(img.resize((w, h)), left_top)
-    base_img.paste(tmp_base,(0,0),mask_img)
+    tmp1_base.paste(img.resize((w, h)), left_top)
+    tmp2_base.paste(tmp1_base,(0,0),mask_img)
+    # base_img.paste(tmp_base,(0,0),mask_img)
+    base_img = ImageChops.multiply(base_img, tmp2_base)
 
     if "texture.png" in os.listdir(spu_path):
         final_img = ImageChops.multiply(base_img,tmp_texture)
@@ -46,7 +49,7 @@ def mockup_render(spu,img):
     else:
         final_img = base_img
 
-    return final_img
+    return base_img
 
 class MOCKUP:
     @classmethod
