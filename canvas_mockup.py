@@ -44,12 +44,12 @@ def mockup_render(spu,img):
     base_img = ImageChops.multiply(base_img, tmp2_base)
 
     if "texture.png" in os.listdir(spu_path):
-        final_img = ImageChops.multiply(base_img,tmp_texture)
-        # base_img.paste(texture_img,(0,0),texture_img)
-    else:
-        final_img = base_img
+        # final_img = ImageChops.multiply(base_img,tmp_texture)
+        base_img.paste(texture_img,(0,0),texture_img)
+    # else:
+    final_img = base_img
 
-    return base_img
+    return final_img
 
 class MOCKUP:
     @classmethod
