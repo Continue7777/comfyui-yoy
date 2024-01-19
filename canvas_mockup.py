@@ -13,6 +13,8 @@ def mockup_render(spu,img):
     base_file = os.path.join(spu_path,"base.png")
     mask_file = os.path.join(spu_path,"mask.png")
     texture_file = os.path.join(spu_path,"texture.png")
+    if os.path.exists(dir_path) == False:
+        os.mkdir(dir_path)
     if spu not in os.listdir(dir_path):
         # download
         try:
